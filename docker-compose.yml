@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  node:
+    image: registry.evix.io/money-markets-slack-bot/node
+    container_name: money-markets-slack-bot
+    restart: unless-stopped
+    mem_limit: 32mb
