@@ -13,10 +13,21 @@ const postCMCDaily = async () => {
   }
 
   for (const item of data) {
-    if (!items.includes(item)) {
-      console.log(`New article: ${item}`);
-      items.push(item);
+    if (items.includes(item)) {
+      continue;
     }
+
+    console.log(`New article: ${item}`);
+    items.push(item);
+
+    await fetch(process.env.SLACK_WEBHOOK, {
+      method: 'post',
+      body: JSON.stringify({
+        text: `Coinmarketcap daily → ${item}`,
+        unfurl_links: true,
+      }),
+      headers: {'Content-Type': 'application/json'}
+    });
   }
 };
 

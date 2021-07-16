@@ -6,7 +6,7 @@ DOCKERFILE = ./Dockerfile
 TAG = registry.evix.io/money-markets-slack-bot/node
 
 build: ${DOCKERFILE}
-	docker build -f ${DOCKERFILE} -t ${TAG} .
+	docker build -f ${DOCKERFILE} --build-arg SLACK_WEBHOOK=${SLACK_WEBHOOK} -t ${TAG} .
 
 docker-login:
 	docker login registry.evix.io -u ${DOCKER_REGISTRY_USER} -p "${DOCKER_REGISTRY_PASS}"
