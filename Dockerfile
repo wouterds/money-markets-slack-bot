@@ -10,6 +10,9 @@ RUN yarn --pure-lockfile --production
 FROM arm32v7/node:14-alpine
 WORKDIR /code
 
+ARG SLACK_WEBHOOK
+ENV SLACK_WEBHOOK=$SLACK_WEBHOOK
+
 COPY --from=builder /code /code
 
 CMD ["yarn", "start"]
