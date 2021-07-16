@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const cron = require('node-cron');
 
 const items =  [];
 const postCMCDaily = async () => {
@@ -20,4 +21,6 @@ const postCMCDaily = async () => {
 (async () => {
   console.log('Slack bot is running!');
   await postCMCDaily();
+
+  cron.schedule('*/15 * * * *', postCMCDaily);
 })();
