@@ -3,6 +3,7 @@
     "start": "node ."
   },
   "dependencies": {
+    "node-cron": "^3.0.0",
     "node-fetch": "^2.6.1"
   }
 }
